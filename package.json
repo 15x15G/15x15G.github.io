@@ -1,0 +1,26 @@
+{
+    "name": "15x15.github.io",
+    "version": "1.0.0",
+    "description": "个人站点",
+    "main": "index.js",
+    "directories": {
+        "doc": "docs"
+    },
+    "scripts": {
+        "docs:dev": "vuepress dev docs",
+        "docs:build": "vuepress build docs"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/15x15G/15x15G.github.io.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/15x15G/15x15G.github.io/issues"
+    },
+    "homepage": "https://github.com/15x15G/15x15G.github.io#readme",
+    "devDependencies": {
+        "vuepress": "^1.8.2"
+    }
+}
