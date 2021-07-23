@@ -1,26 +1,31 @@
 {
-    "name": "15x15.github.io",
+    "name": "15x15G.github.io",
     "version": "1.0.0",
     "description": "个人站点",
     "main": "index.js",
-    "directories": {
-        "doc": "docs"
+    "dependencies":
+    {
+        "live-server": "^1.2.1",
+        "vuepress": "^1.8.2"
     },
-    "scripts": {
-        "docs:dev": "vuepress dev docs",
-        "docs:build": "vuepress build docs"
+    "devDependencies": {},
+    "scripts":
+    {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "server": "live-server ./ --port=1200 --host=localhost"
+
     },
-    "repository": {
+    "repository":
+    {
         "type": "git",
         "url": "git+https://github.com/15x15G/15x15G.github.io.git"
     },
+    "keywords": [],
     "author": "",
     "license": "ISC",
-    "bugs": {
+    "bugs":
+    {
         "url": "https://github.com/15x15G/15x15G.github.io/issues"
     },
-    "homepage": "https://github.com/15x15G/15x15G.github.io#readme",
-    "devDependencies": {
-        "vuepress": "^1.8.2"
-    }
+    "homepage": "https://github.com/15x15G/15x15G.github.io#readme"
 }
