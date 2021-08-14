@@ -1,0 +1,40 @@
+name: Build and Deploy
+on: 
+  push:
+    branches: 
+      - master
+  workflow_dispatch:
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.16.0]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+
+    - name: Build
+      # use 'npm ci' or 'npm install'
+      run: |
+        set -e
+        npm ci  
+        npm run docs:build
+
+    - name: Commit and push
+      run: |
+        cd docs/.vuepress/dist
+        git init
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
+        git add -A
+        git commit -m "Auto Deploy"
+        git push -f git@github.com:15x15G/15x15G.github.io.git master:gh-pages
