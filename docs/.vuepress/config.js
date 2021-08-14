@@ -1,6 +1,6 @@
 module.exports = {
-    title: '个人文档',
-    description: '练习文档',
+    title: '15x15',
+    description: '15x15的主页',
     head: [
         [
             'script', // js 文件
@@ -9,59 +9,45 @@ module.exports = {
         [
             'script', // js 文件
             { src: '/js/eorzeaclock.min.js' }
+            // ]
+            // [
+            //     'script', // https://github.com/cjh0613/anti-selfish-browser
+            //     { src: 'https://cdn.staticfile.org/layer/3.1.1/layer.min.js' }
+            // ],
+            // [
+            //     'script', // https://github.com/cjh0613/anti-selfish-browser
+            //     { src: 'https://cdn.jsdelivr.net/gh/cjh0613/anti-selfish-browser@master/Browser.js' }
+            // ],
+            // [
+            //     'script', // https://github.com/cjh0613/anti-selfish-browser
+            //     { src: 'https://cdn.jsdelivr.net/gh/cjh0613/anti-selfish-browser@master/anti-selfish-browser.js' }
         ]
-
     ],
     themeConfig:
     {
         nav: [
-            { text: 'Home', link: '/' }, // 根路径
-            { text: 'Guide', link: '/t1/t11' },
-            { text: 'External', link: 'https://google.com' }, // 外部链接
+            { text: '主页', link: '/' }, // 根路径
+            { text: '导航', link: '/ff14/' },
+            // { text: 'External', link: 'https://google.com' }, // 外部链接
             // 显示下拉列表
             {
-                text: 'Languages',
+                text: '我的项目',
                 items: [
-                    { text: 'Chinese', link: 'https://baidu.com' },
-                    { text: 'Japanese', link: 'https://google.com' }
+                    { text: 'Upptime', link: 'https://15x15G.github.io/upptime' },
+                    { text: 'GaRss', link: 'https://15x15G.github.io/garss' },
+                    { text: 'FFXIVGuideBook', link: 'https://15x15G.github.io/FFXIV_ARR_GuideBook_CN' },
+                    { text: 'OnlineProxy', link: 'https://proxy.15x15.workers.dev/' }
                 ]
-            },
-            // 下拉列表显示分组
-            {
-                text: '高级',
-                items: [
-                {
-                    text: '算法',
-                    items: [
-                        { text: 'Chinese', link: 'https://baidu.com' },
-                        { text: 'Japanese', link: 'https://google.com' }
-                    ]
-                },
-                {
-                    text: '设计模式',
-                    items: [
-                        { text: 'Chinese', link: 'https://baidu.com' },
-                        { text: 'Japanese', link: 'https://google.com' }
-                    ]
-                }, ]
             }
         ],
         sidebar: [
             '/',
             {
-                title: '1',
-                collapsable: false,
-                children: [
-                    '/t1/',
-                    '/t1/t11',
-                    '/t1/t22'
-                ]
-            },
-            {
                 title: 'FF14',
                 collapsable: false,
                 children: [
-                    '/ff14/'
+                    '/ff14/',
+                    '/ff14/AtmaClock'
                 ]
             }
         ]
