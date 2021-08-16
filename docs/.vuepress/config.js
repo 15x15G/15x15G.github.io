@@ -41,7 +41,9 @@ module.exports = {
                     { text: 'Upptime', link: 'https://15x15G.github.io/upptime' },
                     { text: 'GaRss', link: 'https://15x15G.github.io/garss' },
                     { text: 'FFXIVGuideBook', link: 'https://15x15G.github.io/FFXIV_ARR_GuideBook_CN' },
-                    { text: 'OnlineProxy', link: 'https://proxy.15x15.workers.dev/' }
+                    { text: 'OnlineProxy', link: 'https://proxy.15x15.workers.dev' },
+                    { text: 'Picx', link: 'https://15x15g.github.io/picx' }
+
                 ]
             }
         ],
@@ -77,12 +79,12 @@ module.exports = {
              * @allowAll
              * Optional: if it's true and @disallowAll is false, all others options are ignored and allow all robots complete access
              */
-            allowAll: false,
+            //allowAll: false,
             /**
              * @sitemap
              * Optional, by default: sitemap.xml
              */
-            sitemap: "/assets/sitemap.xml"
+            //sitemap: "/assets/sitemap.xml"
             /**
              * @policies
              * Optional, by default: null
