@@ -54,7 +54,8 @@ module.exports = {
                 collapsable: false,
                 children: [
                     '/ff14/',
-                    '/ff14/AtmaClock'
+                    '/ff14/AtmaClock',
+                    '/ff14/Search'
                 ]
             }
         ],
@@ -102,6 +103,6 @@ module.exports = {
         },
         '@vuepress/back-to-top': true,
         '@vuepress/medium-zoom': true,
-        '@vuepress/nprogress': true
+        '@vuepress/nprogress': true,
     }
 }
