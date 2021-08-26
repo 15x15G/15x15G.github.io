@@ -6,27 +6,8 @@ module.exports = {
         ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' }],
         ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' }],
         ['link', { rel: 'manifest', href: '/site.webmanifest' }],
-
-        [
-            'script', // js 文件
-            { src: '/js/eoclock.js' }
-        ],
-        [
-            'script', // js 文件
-            { src: '/js/eorzeaclock.min.js' }
-            // ]
-            // [
-            //     'script', // https://github.com/cjh0613/anti-selfish-browser
-            //     { src: 'https://cdn.staticfile.org/layer/3.1.1/layer.min.js' }
-            // ],
-            // [
-            //     'script', // https://github.com/cjh0613/anti-selfish-browser
-            //     { src: 'https://cdn.jsdelivr.net/gh/cjh0613/anti-selfish-browser@master/Browser.js' }
-            // ],
-            // [
-            //     'script', // https://github.com/cjh0613/anti-selfish-browser
-            //     { src: 'https://cdn.jsdelivr.net/gh/cjh0613/anti-selfish-browser@master/anti-selfish-browser.js' }
-        ]
+        ['script', { src: '/js/eoclock.js' }],
+        ['script', { src: '/js/eorzeaclock.min.js' }]
     ],
     themeConfig:
     {
@@ -55,7 +36,8 @@ module.exports = {
                 children: [
                     '/ff14/',
                     '/ff14/AtmaClock',
-                    '/ff14/Search'
+                    '/ff14/Search',
+                    '/ff14/Map'
                 ]
             }
         ],

@@ -31,9 +31,13 @@
     }
     function func() 
     {
-        document.getElementById("demo").innerHTML = '搜索中';
         var text='';
         var x = document.getElementById("item").value;
+        if(x.length<2){
+            document.getElementById("demo").innerHTML = '请输入至少两个字符';
+            return;
+        }  
+        document.getElementById("demo").innerHTML = '搜索中';
         var url = 'https://cafemaker.wakingsands.com'+"/search?indexes=Item&string="+encodeURIComponent(x);
         fetch(url)
         .then(data=>{return data.json()})
