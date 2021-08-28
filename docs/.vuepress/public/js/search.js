@@ -1,5 +1,5 @@
 var lock = false;
-
+var apiUrl = 'https://cafemaker.wakingsands.com'
 async function MapSearch()
 {
     if (lock)
@@ -7,7 +7,6 @@ async function MapSearch()
     lock = true;
     try
     {
-        const xivapi = 'https://cafemaker.wakingsands.com'
         const xivapiorg = 'https://xivapi.com'
         let text = '';
         const x = document.getElementById("mapsearch").value;
@@ -17,20 +16,20 @@ async function MapSearch()
             return;
         }
         document.getElementById("mapresult").innerHTML = '搜索中';
-        const url = xivapi + "/search?indexes=PlaceName&string=" + encodeURIComponent(x);
+        const url = apiUrl + "/search?indexes=PlaceName&string=" + encodeURIComponent(x);
         await fetch(url)
             .then(data => { return data.json() })
-            .then(async (res) =>
-            {
+            .then(async (res) => {
                 text += `搜索结果：${res.Pagination.ResultsTotal}个，仅显示有效值<br><br>`;
 
                 const ulNode = document.createElement("ul");
 
-                for (let i in res.Results)
-                {
-                    const nexturl = `https://cafemaker.wakingsands.com/PlaceName/${res.Results[i].ID}`;
-                    const single = await fetch(nexturl);
-                    const PlaceName = await single.json();
+                const ids = res.Results.map(d => d.ID).join(',')
+                const nnurl = `${apiUrl}/PlaceName?ids=${ids}&columns=Name,Maps`;
+                const PlaceNames = await fetch(nnurl).then(data => { return data.json() });
+                console.log(PlaceNames);
+                for (let i in PlaceNames.Results) {
+                    const PlaceName = PlaceNames.Results[i];
                     if (PlaceName.Maps.length > 0)
                     {
                         const liNode = document.createElement("li");
@@ -71,6 +70,7 @@ async function MapSearch()
                         }
                     }
                 }
+                
                 document.getElementById("mapresult").innerHTML = text;
                 document.getElementById("mapresult").appendChild(ulNode);
             });
@@ -102,7 +102,7 @@ async function LoreSearch()
             return;
         }
         document.getElementById("loreresult").innerHTML = '搜索中';
-        const url = 'https://cafemaker.wakingsands.com' + "/lore?columns=Text,Data,Source&language=cn&string=" + encodeURIComponent(x);
+        const url = apiUrl + "/lore?columns=Text,Data,Source&language=cn&string=" + encodeURIComponent(x);
         await fetch(url)
             .then(data => { return data.json() })
             .then(res =>
@@ -123,10 +123,14 @@ async function LoreSearch()
                     const source = res.Results[i].Source
                     const id = res.Results[i].Data.ID;
                     const name = res.Results[i].Data.Name
-                    const context = name ? `${source} - ${id} - ${name}` : `${source} - ${id}`;
+                    const context = name ? `${source}/${id} - ${name}` : `${source}/${id}`;
 
                     const liNode = document.createElement("li");
+                    const aNode = document.createElement("a");
                     const TextNode = document.createTextNode(context);
+                    aNode.href = `${apiUrl}/${source}/${id}`;
+                    aNode.target = "_blank";
+                    aNode.appendChild(TextNode);
 
                     const codeulNode = document.createElement("ul");
                     const codeliNode = document.createElement("li");
@@ -136,7 +140,7 @@ async function LoreSearch()
                     codeliNode.appendChild(codeNode);
                     codeulNode.appendChild(codeliNode);
 
-                    liNode.appendChild(TextNode);
+                    liNode.appendChild(aNode);
                     liNode.appendChild(codeulNode);
                     ulNode.appendChild(liNode);
 
@@ -168,7 +172,7 @@ async function ItemSearch()
         return;
     }
     document.getElementById("itemresult").innerHTML = '搜索中';
-    const url = 'https://cafemaker.wakingsands.com' + "/search?indexes=Item&string=" + encodeURIComponent(x);
+    const url = apiUrl + "/search?indexes=Item&string=" + encodeURIComponent(x);
     await fetch(url)
         .then(data => { return data.json() })
         .then(res =>
@@ -189,8 +193,8 @@ async function ItemSearch()
             {
                 context:
                 {
-                    apiBaseUrl: 'https://cafemaker.wakingsands.com', // xivapi 或 cafemaker 的 url；最后不要有斜线
-                    iconBaseUrl: 'https://cafemaker.wakingsands.com/i', // 图标 cdn 的 url；最后不要有斜线
+                    apiBaseUrl: apiUrl, // xivapi 或 cafemaker 的 url；最后不要有斜线
+                    iconBaseUrl: `${apiUrl}/i`, // 图标 cdn 的 url；最后不要有斜线
                     defaultHq: true, // 是否默认显示 HQ 数据
                     hideSeCopyright: true, // 是否隐藏 SE 版权信息
                 },
