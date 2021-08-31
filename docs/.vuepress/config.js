@@ -38,7 +38,8 @@ module.exports = {
                     '/ff14/AtmaClock',
                     '/ff14/Search',
                     '/ff14/Map',
-                    '/ff14/Lore'
+                    '/ff14/Lore',
+                    '/ff14/Font'
                 ]
             }
         ],

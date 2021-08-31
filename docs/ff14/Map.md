@@ -39,6 +39,8 @@
 
 [大地图](https://map.wakingsands.com/)
 
+鸣谢：[地图工具支持](https://github.com/thewakingsands/wakingsands.com/wiki/InteractiveMap)
+
 <br>
 <input id="mapsearch" value='溶洞' onkeydown="Enter(event)" >
 <button type="button" onclick="MapSearch()" >搜索</button>

@@ -1,6 +1,8 @@
 # 高级文本搜索
 
-目前仅支持中文文本检索
+目前仅支持中文文本检索，不好用，建议使用[文本检索工具](https://strings.wakingsands.com/)
+
+
 
 <details>
   <summary>目前包含在搜索中的内容</summary>
@@ -24,9 +26,10 @@
 
 <div>
     <script src="/js/search.js" defer></script>
+    <script src="/js/xivapi.js" defer></script>
     <br>
     <br>
     <input id="loresearch" value='苍天之龙骑士' onkeydown="Enter(event)" >
-    <button type="button" onclick="LoreSearch()" >搜索</button>
+    <button type="button" onclick="NewLoreSearch()" >搜索</button>
     <p id="loreresult"></p>
 </div>

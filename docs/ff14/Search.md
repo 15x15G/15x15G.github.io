@@ -1,11 +1,10 @@
 # 简易物品搜索
 
+鸣谢：[悬浮窗工具支持](https://unpkg.cnpmjs.org/@thewakingsands/kit-tooltip@0.2.0/dist/example/auto.html)
+
 <div>
 <script src="https://cdn.jsdelivr.net/npm/@thewakingsands/kit-tooltip/dist/bundle.js"></script>
 <script src="/js/search.js" defer></script>
-</div>
-
-<div>
 <style type="text/css">
 #demo>span:hover {
   color: #00f;
