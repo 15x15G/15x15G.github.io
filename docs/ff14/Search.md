@@ -14,8 +14,8 @@
 </style>
 <script>
 </script>
+<div class="search-box"><input id="itemsearch" value='酒神杖·究极' onkeydown="Enter(event)" ></div>
 
-<input id="itemsearch" value='酒神杖·究极' onkeydown="Enter(event)" >
 <button type="button" onclick="ItemSearch()" >搜索</button>
 
 <p id="itemresult"></p>

@@ -2,13 +2,15 @@
 
 鸣谢： [FF14图标支持](https://github.com/thewakingsands/ffxiv-axis-font-icons)
 
-字体字符：<span class='ffxiv'></span>
+<div id="loading">加载中……</div>
 
-css加载： <i class="xiv ime-hira-full"></i>
+👇你甚至可以在这里写宏
 
-  <div id="loading">加载中……</div>
+<textarea class='ffxiv' id="allicon" rows=20 style="resize: none;width: 80%;"></textarea>
 
-<table>
+<details>
+  <summary>字符介绍</summary>
+  <table>
     <thead>
         <tr>
         <th>字符</th>
@@ -19,6 +21,7 @@ css加载： <i class="xiv ime-hira-full"></i>
     </thead>
     <tbody></tbody>
 </table>
+</details>
 <script src="https://cdn.jsdelivr.net/npm/crel@4.2.1/crel.min.js" integrity="sha256-1QJN4sehgRSpatqbGj5FUMKGW035GCEYG4U9QksrKlM=" crossorigin="anonymous">
 </script>
 <script>
@@ -30,16 +33,16 @@ css加载： <i class="xiv ime-hira-full"></i>
     // selection.removeAllRanges()
     // selection.addRange(range)
     // }, true)
-    fetch('https://cdn.jsdelivr.net/gh/thewakingsands/ffxiv-axis-font-icons/characters.json')
+    fetch('/json/characters.json')
     .then(function (resp) {
         return resp.json()
     })
     .then(function (json) {
-        var tbody = document.querySelector('tbody')
-        for (var codepoint in json) {
-            var name = json[codepoint][0]
-            var desc = json[codepoint][1]
-            var row = crel('tr', [
+        const tbody = document.querySelector('tbody')
+        for (let codepoint in json) {
+            const name = json[codepoint][0]
+            const desc = json[codepoint][1]
+            const row = crel('tr', [
                 crel('td', { class: 'ffxiv' }, String.fromCodePoint(parseInt(codepoint, 16))),
                 crel('td', codepoint),
                 crel('td', crel('code', '<i class="xiv ' + name + '"></i>')),
@@ -47,6 +50,11 @@ css加载： <i class="xiv ime-hira-full"></i>
             ])
             tbody.appendChild(row)
         }
+        let text=''
+        for (let codepoint in json) {
+            text+=String.fromCodePoint(parseInt(codepoint, 16))
+        }
+        document.querySelector('#allicon').innerHTML=text;
         document.querySelector('#loading').style.display = 'none';
     })
 </script>

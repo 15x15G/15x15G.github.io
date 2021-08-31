@@ -11,8 +11,25 @@
   font-family: 'FFXIV';
 }
 
-.theme-default-content{
+input{
+  font-family: 'FFXIV',Arial;
+}
+
+body{
   font-family: 'FFXIV',-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
-@import "/css/ffxivfont.css"
+//@import "/css/ffxivfont.css"
+
+icons = json('../public/json/characters.json', { hash: true })
+
+i.xiv
+  &::before
+    font-family 'FFXIV'
+    font-style normal
+
+for char, cls in icons
+  i.xiv.{cls[0]}::before
+    content '\' + char
+  i.xiv.{char}::before
+    content '\' + char

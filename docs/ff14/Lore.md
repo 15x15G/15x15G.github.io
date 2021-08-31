@@ -29,7 +29,7 @@
     <script src="/js/xivapi.js" defer></script>
     <br>
     <br>
-    <input id="loresearch" value='苍天之龙骑士' onkeydown="Enter(event)" >
+    <div class="search-box"><input id="loresearch" value='苍天之龙骑士' onkeydown="Enter(event)" ></div>    
     <button type="button" onclick="NewLoreSearch()" >搜索</button>
     <p id="loreresult"></p>
 </div>
