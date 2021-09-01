@@ -3,11 +3,25 @@
 <div>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.5.1/dist/leaflet.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@thewakingsands/eorzea-interactive-map/dist/map.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@thewakingsands/eorzea-interactive-map/dist/map.js"></script>
     <script src="/js/search.js" defer></script>
     <script type="text/javascript">          
-        //setTimeout(MapInit,5000);
+        function MapInit(){
+            const el = document.querySelector('#eorzea-map') // 地图容器，请自行创建
+            if(!el) return;
+            if (!window.YZWF) {
+                setTimeout(MapInit,1000)
+            }
+            else{
+                window.YZWF.eorzeaMap.create(el)
+                    .then(function (map) {
+                        window.map = map
+                        map.loadMapKey(92) // 92 为地图编号（游戏内 Map 表）
+                        // https://xivapi.com/Map/92
+                    });                
+            }  
+        }
+        MapInit();
     </script>
     <style>
         .erozea-map-outer {

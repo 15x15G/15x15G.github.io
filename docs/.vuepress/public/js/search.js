@@ -202,19 +202,6 @@ function LoadMap(id) {
     window.map.loadMapKey(id)
 }
 
-function MapInit() {
-    const el = document.querySelector('#eorzea-map') // 地图容器，请自行创建
-    if (el) {
-        window.YZWF.eorzeaMap.create(el)
-            .then(function (map) {
-                window.map = map
-                map.loadMapKey(92) // 92 为地图编号（游戏内 Map 表）
-                // https://xivapi.com/Map/92
-            });
-    }
-
-}
-
 async function NewLoreSearch() {
     if (lock)
         return;
@@ -288,5 +275,4 @@ async function NewLoreSearch() {
     }
 }
 
-MapInit();
 

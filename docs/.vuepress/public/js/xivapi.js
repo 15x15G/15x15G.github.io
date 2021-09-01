@@ -99,8 +99,8 @@ const utils = {
             .filter(k => obj[k] ? true : false)
             .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(obj[k]))
             .join('&');
-        paramsstr = urlfy(params)
-        uristr = `${this.endpoint + path}?${paramsstr} `
+        const paramsstr = urlfy(params)
+        const uristr = `${this.endpoint + path}?${paramsstr} `
         console.log(uristr)
 
         return fetch(uristr, { method: 'GET', }).then(r => r.json())
@@ -381,3 +381,4 @@ async function xivtext(str) {
 
 }
 
+export { XIVAPI }

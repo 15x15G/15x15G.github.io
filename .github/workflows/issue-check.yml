@@ -1,0 +1,14 @@
+on:
+  issues:
+    types: [opened]
+jobs:
+  UserCheck:
+    runs-on: ubuntu-latest
+    steps:
+      - if: github.event.issue.user.login != '15x15G'
+        name: Close Issue
+        uses: peter-evans/close-issue@v1
+        with:
+          comment: |
+          只有作者可以创建 Issue 
+          有任何疑惑可去[讨论区](https://github.com/15x15G/15x15G.github.io/discussions)发帖
