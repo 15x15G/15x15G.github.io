@@ -56,8 +56,6 @@ module.exports = {
                 },
             ],
         },
-        lastUpdated: '本文上次更新时间' // string | boolean
-
     },
     plugins:
     {
