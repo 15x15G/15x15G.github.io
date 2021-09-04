@@ -6,7 +6,9 @@ module.exports = {
         ['link', { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' }],
         ['link', { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' }],
         ['link', { rel: 'manifest', href: '/site.webmanifest' }],
+        ['script', { src: 'https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js' }],
         ['script', { src: 'https://cdn.jsdelivr.net/npm/crel@4.2.1/crel.min.js' }],
+        ['script', { src: 'https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js' }],
         ['meta', { name: 'theme-color', content: '#3eaf7c' }],
         ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
         ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
@@ -18,11 +20,12 @@ module.exports = {
     {
         nav: [
             { text: '主页', link: '/' }, // 根路径
-            { text: '导航', link: '/ff14/' },
+            { text: '?', link: '/Blog/' }, // 根路径
+            { text: 'FF14工具', link: '/ff14/' },
             // { text: 'External', link: 'https://google.com' }, // 外部链接
             // 显示下拉列表
             {
-                text: '我的项目',
+                text: '其他项目',
                 items: [
                     { text: 'Upptime', link: 'https://15x15G.github.io/upptime' },
                     { text: 'GaRss', link: 'https://15x15G.github.io/garss' },
@@ -34,27 +37,29 @@ module.exports = {
             }
         ],
         sidebar: {
-            '/': [
+            '/ff14/': [
                 {
                     title: 'FF14',
                     collapsable: false,
                     children: [
-                        '/ff14/',
-                        '/ff14/AtmaClock',
-                        '/ff14/Search',
-                        '/ff14/Map',
-                        '/ff14/Lore',
-                        '/ff14/Font'
+                        '',
+                        'AtmaClock',
+                        'Search',
+                        'Map',
+                        'Lore',
+                        'Font'
                     ]
                 },
+            ],
+            '/Blog/': [
                 {
                     title: '碎碎念',
                     collapsable: false,
                     children: [
-                        '/Blog/',
+                        '',
                     ]
                 },
-            ],
+            ]
         },
     },
     plugins:
@@ -71,7 +76,10 @@ module.exports = {
         '@vuepress/nprogress': true,
         '@vuepress/pwa': {
             serviceWorker: true,
-            updatePopup: true
+            updatePopup: {
+                message: "网站更新了~",
+                buttonText: "刷新"
+            }
         }
     }
 }

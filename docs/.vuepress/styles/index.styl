@@ -1,14 +1,15 @@
-
+@import 'https://cdn.jsdelivr.net/npm/cooltipz-css@1.6/cooltipz.css'
 
 @font-face {
   font-family: 'FFXIV';
   src: url('/fonts/FFXIV_Lodestone_SSF.ttf') format('truetype'),
        url('/fonts/FFXIV_Lodestone_SSF.woff') format('woff');
   unicode-range: U+E020-E0DB;
+  font-weight: 100 400;
 }
 
 .ffxiv{
-  font-family: 'FFXIV';
+  font-family: 'FFXIV' !important;
 }
 
 input{
@@ -33,3 +34,4 @@ for char, cls in icons
     content '\' + char
   i.xiv.{char}::before
     content '\' + char
+

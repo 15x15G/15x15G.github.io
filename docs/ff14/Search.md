@@ -1,7 +1,7 @@
 # 简易物品搜索
 
-鸣谢：[悬浮窗工具支持](https://unpkg.cnpmjs.org/@thewakingsands/kit-tooltip@0.2.0/dist/example/auto.html)
 
+<br>
 <div>
 <script src="https://cdn.jsdelivr.net/npm/@thewakingsands/kit-tooltip/dist/bundle.js"></script>
 <script src="/js/search.js" defer></script>
@@ -20,4 +20,8 @@
 
 <p id="itemresult"></p>
 </div>
+<br>
+<br>
+<br>
 
+鸣谢：[悬浮窗工具支持](https://unpkg.cnpmjs.org/@thewakingsands/kit-tooltip@0.2.0/dist/example/auto.html)

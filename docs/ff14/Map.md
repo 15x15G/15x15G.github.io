@@ -53,7 +53,6 @@
 
 [大地图](https://map.wakingsands.com/)
 
-鸣谢：[地图工具支持](https://github.com/thewakingsands/wakingsands.com/wiki/InteractiveMap)
 
 <br>
 <div class="search-box"><input id="mapsearch" value='溶洞' onkeydown="Enter(event)" ></div>
@@ -67,3 +66,8 @@
     <div class="eorzea-map-resize-handler"></div>
     </section>
 </div>
+<br>
+<br>
+<br>
+
+鸣谢：[地图工具支持](https://github.com/thewakingsands/wakingsands.com/wiki/InteractiveMap)
