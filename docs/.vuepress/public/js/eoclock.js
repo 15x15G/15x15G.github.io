@@ -908,15 +908,17 @@ function etData3() {
 
 
 function show() {
-	const dom1 = document.querySelector('aside.sidebar')
+	const dom1 = document.querySelector('div.theme-container')
 	if (dom1) {
-		const dom2 = document.querySelector('aside.sidebar #showtime');
+		const dom2 = document.querySelector('div.theme-container #showtime');
 		if (dom2) {
 			dom2.innerHTML = etData3();
 		} else {
+			document.querySelector('aside.sidebar').style = 'bottom:15%;'
 			const d1 = document.createElement('div')
 			d1.id = 'showtime'
-			d1.style = 'vertical-align:middle;display:inline-block;position: absolute; bottom: 10px;right:0;left:0;text-align: center;line-height: 2.0em;'
+			d1.className = 'sidebar'
+			d1.style = 'vertical-align: middle; display: inline-block; top:85%; text-align: center; line-height: 2em;'
 			dom1.appendChild(d1)
 		}
 	}
