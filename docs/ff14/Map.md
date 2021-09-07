@@ -61,7 +61,7 @@
 <br>
 <br>
 <div>
-    <section  class="erozea-map-outer" style="height:40%;width:90%">
+    <section  class="erozea-map-outer" style="height:500px;width:600px">
     <div class="eorzea-map-inner" id="eorzea-map" ></div>
     <div class="eorzea-map-resize-handler"></div>
     </section>

@@ -860,11 +860,11 @@ function etData3() {
 	EorzeaDay.setTime(EorzeaUnix);
 	const EtDay = EorzeaDay.getDay();
 
-	//刻・時間属性の取得
-	const EorzeaHour = eorzeaHour();
-	EorzeaHour.setTime(EorzeaUnix);
-	const EtHourAttribute = EorzeaHour.getHourAttribute();
-	const EtTimeAttribute = EorzeaHour.getTimeAttribute();
+	// //刻・時間属性の取得
+	// const EorzeaHour = eorzeaHour();
+	// EorzeaHour.setTime(EorzeaUnix);
+	// const EtHourAttribute = EorzeaHour.getHourAttribute();
+	// const EtTimeAttribute = EorzeaHour.getTimeAttribute();
 
 	//月齢変更時間の取得
 	const EorzeaMoon = eorzeaMoon();
@@ -886,14 +886,14 @@ function etData3() {
 	const WEEK_LIST = ["spirit", "wind", "lightning", "fire", "earth", "ice", "water", "star"];
 	const EtDayText = WEEK_LIST_TEXT[WEEK_LIST.indexOf(EtDay)];
 
-	const HOUR_ATTRIBUTE_LIST_TEXT = ["風属時", "雷属時", "火属時", "土属時", "氷属時", "水属時"];
-	const HOUR_ATTRIBUTE_LIST = ["wind", "lightning", "fire", "earth", "ice", "water"];
-	const EtHourAttributeText = HOUR_ATTRIBUTE_LIST_TEXT[HOUR_ATTRIBUTE_LIST.indexOf(EtHourAttribute)];
+	// const HOUR_ATTRIBUTE_LIST_TEXT = ["風属時", "雷属時", "火属時", "土属時", "氷属時", "水属時"];
+	// const HOUR_ATTRIBUTE_LIST = ["wind", "lightning", "fire", "earth", "ice", "water"];
+	// const EtHourAttributeText = HOUR_ATTRIBUTE_LIST_TEXT[HOUR_ATTRIBUTE_LIST.indexOf(EtHourAttribute)];
 
 
-	const TIME_ATTRIBUTE_LIST_TEXT = ["氷の刻", "水の刻", "風の刻", "雷の刻", "火の刻", "土の刻"];
-	const TIME_ATTRIBUTE_LIST = ["ice", "water", "wind", "lightning", "fire", "earth"];
-	const EtTimeAttributeText = TIME_ATTRIBUTE_LIST_TEXT[TIME_ATTRIBUTE_LIST.indexOf(EtTimeAttribute)];
+	// const TIME_ATTRIBUTE_LIST_TEXT = ["氷の刻", "水の刻", "風の刻", "雷の刻", "火の刻", "土の刻"];
+	// const TIME_ATTRIBUTE_LIST = ["ice", "water", "wind", "lightning", "fire", "earth"];
+	// const EtTimeAttributeText = TIME_ATTRIBUTE_LIST_TEXT[TIME_ATTRIBUTE_LIST.indexOf(EtTimeAttribute)];
 
 
 	const MOON_LIST_TEXT = ["新月", "三日月", "上弦の月", "十三夜", "満月", "十六夜", "下弦の月", "二十六夜"];
@@ -902,22 +902,19 @@ function etData3() {
 	const EtMoonImg = `<img style="vertical-align:middle;" src="/img/${EtMoon}.png">`;
 
 	return ` ${doubleDigit(EtMonth)}月${doubleDigit(EtDate)}日 ${doubleDigit(EtHour)}:${doubleDigit(EtMinute)} <br>` +
-		`${EtMonthImg}<span style="vertical-align:middle;">${EtNewPolarityText}${EtNewMonth}月(${EtMonthText}) ${EtMoonText}</span>${EtMoonImg}<br>` +
-		`${EtDayText} ${EtHourAttributeText} ${EtTimeAttributeText}`;
+		`${EtMonthImg}<span style="vertical-align:middle;">${EtNewPolarityText}${EtNewMonth}月(${EtMonthText}) ${EtDayText} </span>${EtMoonImg}`
 }
 
-
 function show() {
-	const dom1 = document.querySelector('div.theme-container')
+	const dom1 = document.querySelector('aside.sidebar')
 	if (dom1) {
-		const dom2 = document.querySelector('div.theme-container #showtime');
+		const dom2 = document.querySelector('aside.sidebar #showtime');
 		if (dom2) {
 			dom2.innerHTML = etData3();
 		} else {
-			document.querySelector('aside.sidebar').style = 'bottom:35%;'
+			document.querySelector('div.theme-container > aside > ul.sidebar-links').style = 'max-height:70%;overflow-x:auto;overflow-y:auto;'
 			const d1 = document.createElement('div')
 			d1.id = 'showtime'
-			d1.className = 'sidebar'
 			d1.style = 'vertical-align: middle; display: inline-block; top:85%; text-align: center; line-height: 2em;'
 			dom1.appendChild(d1)
 		}
