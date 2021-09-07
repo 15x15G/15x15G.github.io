@@ -128,37 +128,49 @@
 
 .eorzeaclock_datetime .eorzeaclock_style_element_ice,
 .eorzeaclock_style_element_ice label {
-    background: url("ico-ice.png") no-repeat left center;
+    background: url("/img/ice.png") no-repeat left center;
     padding-left: 20px;
 }
 
 .eorzeaclock_datetime .eorzeaclock_style_element_earth,
 .eorzeaclock_style_element_earth label {
-    background: url("ico-earth.png") no-repeat left center;
+    background: url("/img/earth.png") no-repeat left center;
     padding-left: 20px;
 }
 
 .eorzeaclock_datetime .eorzeaclock_style_element_fire,
 .eorzeaclock_style_element_fire label {
-    background: url("ico-fire.png") no-repeat left center;
+    background: url("/img/fire.png") no-repeat left center;
     padding-left: 20px;
 }
 
 .eorzeaclock_datetime .eorzeaclock_style_element_lightning,
 .eorzeaclock_style_element_lightning label {
-    background: url("ico-lightning.png") no-repeat left center;
+    background: url("/img/lightning.png") no-repeat left center;
     padding-left: 20px;
 }
 
 .eorzeaclock_datetime .eorzeaclock_style_element_water,
 .eorzeaclock_style_element_water label {
-    background: url("ico-water.png") no-repeat left center;
+    background: url("/img/water.png") no-repeat left center;
     padding-left: 20px;
 }
 
 .eorzeaclock_datetime .eorzeaclock_style_element_wind,
 .eorzeaclock_style_element_wind label {
-    background: url("ico-wind.png") no-repeat left center;
+    background: url("/img/wind.png") no-repeat left center;
+    padding-left: 20px;
+}
+
+.eorzeaclock_datetime .eorzeaclock_style_element_astral,
+.eorzeaclock_style_element_astral label {
+    background: url("/img/star.png") no-repeat left center;
+    padding-left: 20px;
+}
+
+.eorzeaclock_datetime .eorzeaclock_style_element_umbral,
+.eorzeaclock_style_element_umbral label {
+    background: url("/img/spirit.png") no-repeat left center;
     padding-left: 20px;
 }
 

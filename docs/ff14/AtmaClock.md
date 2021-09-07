@@ -10,14 +10,13 @@
             background-color: transparent;
         }
     </style>
-    <script src="/js/eoclock.js" ></script>
     <script src="/js/eorzeaclock.min.js" ></script>
 </div>
 
 <div id="eorzeaclock2" style="auto;">
     <script type="text/javascript">    
         function checkclc(){
-            if (!(window.EorzeaClock&&window.localToEorzea)) {
+            if (!(window.EorzeaClock&&window.etData2)) {
                 setTimeout(checkclc,200)
             }
             else{
