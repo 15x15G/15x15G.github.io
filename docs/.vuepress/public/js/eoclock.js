@@ -914,7 +914,7 @@ function show() {
 		if (dom2) {
 			dom2.innerHTML = etData3();
 		} else {
-			document.querySelector('aside.sidebar').style = 'bottom:15%;'
+			document.querySelector('aside.sidebar').style = 'bottom:35%;'
 			const d1 = document.createElement('div')
 			d1.id = 'showtime'
 			d1.className = 'sidebar'
