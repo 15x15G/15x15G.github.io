@@ -9,6 +9,7 @@ module.exports = {
         ['script', { src: 'https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js' }],
         ['script', { src: 'https://cdn.jsdelivr.net/npm/crel@4.2.1/crel.min.js' }],
         ['script', { src: 'https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js' }],
+        ['script', { src: '/js/eoclock.js' }],
         ['meta', { name: 'theme-color', content: '#3eaf7c' }],
         ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
         ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
