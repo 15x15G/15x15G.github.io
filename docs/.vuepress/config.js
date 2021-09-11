@@ -63,6 +63,9 @@ module.exports = {
             ]
         },
     },
+    globalUIComponents: [
+        'MyGitscus',
+    ],
     plugins:
     {
         'robots':
