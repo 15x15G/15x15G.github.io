@@ -901,22 +901,22 @@ function etData3() {
 	const EtMoonText = MOON_LIST_TEXT[MOON_LIST.indexOf(EtMoon)];
 	const EtMoonImg = `<img style="vertical-align:middle;" src="/img/${EtMoon}.png">`;
 
-	return ` ${doubleDigit(EtMonth)}月${doubleDigit(EtDate)}日 ${doubleDigit(EtHour)}:${doubleDigit(EtMinute)} <br>` +
-		`${EtMonthImg}<span style="vertical-align:middle;">${EtNewPolarityText}${EtNewMonth}月(${EtMonthText}) ${EtDayText} </span>${EtMoonImg}`
+	return ` ${doubleDigit(EtMonth)}/${doubleDigit(EtDate)} ${doubleDigit(EtHour)}:${doubleDigit(EtMinute)} `
+	// +		`${EtMonthImg}<span style="vertical-align:middle;">${EtNewPolarityText}${EtNewMonth}月(${EtMonthText}) ${EtDayText} </span>${EtMoonImg}`
 }
 
 function show() {
-	const dom1 = document.querySelector('aside.sidebar')
+	const dom1 = document.querySelector('header.navbar')
 	if (dom1) {
-		const dom2 = document.querySelector('aside.sidebar #showtime');
+		const dom2 = document.querySelector('.site-name');
 		if (dom2) {
 			dom2.innerHTML = etData3();
 		} else {
-			document.querySelector('div.theme-container > aside > ul.sidebar-links').style = 'max-height:70%;overflow-x:auto;overflow-y:auto;'
-			const d1 = document.createElement('div')
-			d1.id = 'showtime'
-			d1.style = 'vertical-align: middle; display: inline-block; top:85%; text-align: center; line-height: 2em;'
-			dom1.appendChild(d1)
+			//document.querySelector('div.theme-container > aside > ul.sidebar-links').style = 'max-height:70%;overflow-x:auto;overflow-y:auto;'
+			//const d1 = document.createElement('span')
+			//d1.id = 'showtime'
+			//d1.style = 'vertical-align: middle; display: inline-block; top:85%; text-align: center; line-height: 2em;'
+			//dom1.appendChild(d1)
 		}
 	}
 	setTimeout("show()", 500)

@@ -24,3 +24,11 @@
 ### 其他
 
 看到一个挺新鲜的模式是，博主在issues里发表博文，然后action通过API拉取issues列表来部署博客网站，我得想想能不能把这种方式缝合在这里或者建个新站...
+
+### 讨论区
+
+与gitalk、vssue等基于issues的静态博客评论模块不同，[giscus](https://github.com/laymonage/giscus) 基于Github Discussions 工作，从而能把issues腾出来用作别处。
+
+作为[VUE组件](https://github.com/giscus/giscus-component)导入的工作失败了（...），网上居然完全搜不到将giscus导入vuepress的教程，所以现在 ~~暂时用js加载~~ 用vue组件在单文件中加载，而且暂时不支持FFXIV字体
+
+<Giscus/>

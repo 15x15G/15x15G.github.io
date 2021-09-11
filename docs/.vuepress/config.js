@@ -23,19 +23,9 @@ module.exports = {
             { text: '主页', link: '/' }, // 根路径
             { text: '?', link: '/Blog/' }, // 根路径
             { text: 'FF14工具', link: '/ff14/' },
-            // { text: 'External', link: 'https://google.com' }, // 外部链接
-            // 显示下拉列表
-            {
-                text: '其他项目',
-                items: [
-                    { text: 'Upptime', link: 'https://15x15G.github.io/upptime' },
-                    { text: 'GaRss', link: 'https://15x15G.github.io/garss' },
-                    { text: 'FFXIVGuideBook', link: 'https://15x15G.github.io/FFXIV_ARR_GuideBook_CN' },
-                    { text: 'OnlineProxy', link: 'https://proxy.15x15.workers.dev' },
-                    { text: 'Picx', link: 'https://15x15g.github.io/picx' }
+            { text: '其他工具', link: '/Tools/' },
+            { text: 'Github', link: 'https://github.com/15x15G/15x15G.github.io' }
 
-                ]
-            }
         ],
         sidebar: {
             '/ff14/': [
@@ -63,9 +53,6 @@ module.exports = {
             ]
         },
     },
-    globalUIComponents: [
-        'MyGitscus',
-    ],
     plugins:
     {
         'robots':
