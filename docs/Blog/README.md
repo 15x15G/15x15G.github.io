@@ -31,4 +31,3 @@
 
 作为[VUE组件](https://github.com/giscus/giscus-component)导入的工作失败了（...），网上居然完全搜不到将giscus导入vuepress的教程，所以现在 ~~暂时用js加载~~ 用vue组件在单文件中加载，而且暂时不支持FFXIV字体
 
-<Giscus/>

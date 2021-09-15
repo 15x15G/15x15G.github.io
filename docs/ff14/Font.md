@@ -55,4 +55,3 @@
 鸣谢： [FF14图标支持](https://github.com/thewakingsands/ffxiv-axis-font-icons)
 
 
-<Giscus/>

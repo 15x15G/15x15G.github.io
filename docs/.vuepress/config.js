@@ -72,5 +72,8 @@ module.exports = {
                 buttonText: "刷新"
             }
         }
-    }
+    },
+    globalUIComponents: [
+        'Giscus',
+    ]
 }
