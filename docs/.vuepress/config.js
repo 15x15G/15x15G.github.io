@@ -38,7 +38,8 @@ module.exports = {
                         'Search',
                         'Map',
                         'Lore',
-                        'Font'
+                        'Font',
+                        'Time'
                     ]
                 },
             ],

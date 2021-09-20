@@ -33,15 +33,20 @@ var localToEorzea = function () {
 	 */
 	var MILLISECONDS_PER_HOUR = MILLISECONDS_PER_MINUTE * MINUTES_PER_HOUR;
 	/*
-	 *ET1hour = ET3,600,000ms * ET24h
+	 *ET1date = ET3,600,000ms * ET24h
 	 * (86,400,000ms)
 	 */
 	var MILLISECONDS_PER_DATE = MILLISECONDS_PER_HOUR * HOURS_PER_DATE;
 	/*
-	 *ET1hour = ET86,400,000ms * ET32d
+	 *ET1month = ET86,400,000ms * ET32d
 	 * (2,764,800,000ms)
 	 */
 	var MILLISECONDS_PER_MONTH = MILLISECONDS_PER_DATE * DATES_PER_MONTH;
+	/*
+	*ET1Year = ET2,764,800,000ms * ET12m
+	* (33,177,600,000ms)
+	*/
+	var MILLISECONDS_PER_YEAR = MILLISECONDS_PER_MONTH * MONTHS_PER_YEAR;
 	return {
 		setTime: function (time) {
 			var UNIX = time;
@@ -54,6 +59,9 @@ var localToEorzea = function () {
 		},
 		setEtTime: function (time) {
 			EORZEA_MILLISECONDS = time;
+		},
+		getYear: function () {
+			return Math.floor(EORZEA_MILLISECONDS / MILLISECONDS_PER_YEAR);
 		},
 		getMonth: function () {
 			return Math.floor(EORZEA_MILLISECONDS / MILLISECONDS_PER_MONTH) % MONTHS_PER_YEAR;
@@ -71,7 +79,7 @@ var localToEorzea = function () {
 			return Math.floor(EORZEA_MILLISECONDS / MILLISECONDS_PER_SECONDS) % SECONDS_PER_MINUTE;
 		},
 		getMilliseconds: function () {
-			return EORZEA_MILLISECONDS % MILLISECONDS_PER_SECONDS;
+			return Math.floor(EORZEA_MILLISECONDS % MILLISECONDS_PER_SECONDS);
 		},
 		getTime: function () {
 			return EORZEA_MILLISECONDS;
@@ -447,6 +455,16 @@ var nextDaily = function () {
 //数値2桁表示
 function doubleDigit(number) {
 	if (number < 10) {
+		number = "0" + number;
+	}
+	return number;
+};
+//数値3桁表示
+function tripleDigit(number) {
+	if (number < 10) {
+		number = "00" + number;
+	}
+	else if (number < 100) {
 		number = "0" + number;
 	}
 	return number;
