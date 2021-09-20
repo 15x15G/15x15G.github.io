@@ -3,6 +3,23 @@
 
 [站长工具](http://tool.chinaz.com/Tools/unixtime.aspx)
 
+<details>
+    <summary>月相</summary>
+
+|  月相   | 艾欧泽亚日  |
+|  ----  | ----  |
+| 新月  | 1-4 |
+| 峨眉月  | 5-8 |
+| 上弦月  | 9-12 |
+| 上凸月  | 13-16 |
+| 满月  | 17-20 |
+| 下凸月  | 21-24 |
+| 下弦月  | 25-28 |
+| 残月  | 29-32 |
+</details>
+
+### 当前时间
+
 <div id='timemd'>
     <table>
         <tr>
@@ -16,12 +33,17 @@
             <button class="btn" type="button"  data-clipboard-target='#EorzeaTimestmp'>复制</button></td>
         </tr>
         <tr>
-            <td>UTC时间</td>
+            <td>UTC时间</td>
             <td><input id='UnixTime'>
     <button class="btn" type="button"  data-clipboard-target='#UnixTime'>复制</button></td>
         </tr>
         <tr>
-            <td>艾欧泽亚时间</td>
+            <td>本地时间</td>
+            <td><input id='LocalTime'>
+    <button class="btn" type="button"  data-clipboard-target='#LocalTime'>复制</button></td>
+        </tr>
+        <tr>
+            <td>艾欧泽亚时间</td>
             <td><input id='EorzeaTime'>
     <button class="btn" type="button"  data-clipboard-target='#EorzeaTime'>复制</button></td>
         </tr>
@@ -32,14 +54,24 @@
     </table>
 </div>
 
-<br>
+### 在线转换
 
 <div id='test'>    
     <table>
         <tr>
+            <td>
+                <select  id='testselect'>
+                    <option value ="0">UNIX时间戳(ms)</option>
+                    <option value ="1">时间字符串</option>
+                </select>
+            </td>
+            <td><input id='testinput'>
+    <button onclick=test()>转换</button> </td>
+        </tr>
+        <tr>
             <td>UNIX时间戳(ms)</td>
             <td><input id='testUnixTimestmp'>
-    <button onclick=test()>test</button> </td>
+    <button class="btn" type="button"  data-clipboard-target='#testUnixTimestmp'>复制</button></td>
         </tr>
         <tr>
             <td>艾欧泽亚时间戳(ms)</td>
@@ -47,12 +79,17 @@
     <button class="btn" type="button"  data-clipboard-target='#testEorzeaTimestmp'>复制</button></td>
         </tr>
         <tr>
-            <td>UTC时间</td>
+            <td>UTC时间</td>
             <td><input id='testUnixTime'>
     <button class="btn" type="button"  data-clipboard-target='#testUnixTime'>复制</button></td>
         </tr>
         <tr>
-            <td>艾欧泽亚时间</td>
+            <td>本地时间</td>
+            <td><input id='testLocalTime'>
+    <button class="btn" type="button"  data-clipboard-target='#testLocalTime'>复制</button></td>
+        </tr>
+        <tr>
+            <td>艾欧泽亚时间</td>
             <td><input id='testEorzeaTime'>
     <button class="btn" type="button"  data-clipboard-target='#testEorzeaTime'>复制</button></td>
         </tr>
@@ -66,8 +103,18 @@
 <div>
     <script>
         function test(){
-            const unix=document.querySelector('#testUnixTimestmp').value;
-            const LocalDate = new Date(parseInt(unix));
+            const str = document.querySelector('#testinput').value;
+            let LocalDate;
+            switch (document.querySelector('#testselect').value) {
+                case '0':
+                    LocalDate = new Date(parseInt(str));
+                    break;
+                case '1':
+                    LocalDate = new Date(str);
+                    break;
+                default:
+                    return;
+            }
             const LocalUnix = LocalDate.getTime();
             const EorzeaDate = localToEorzea();
             EorzeaDate.setTime(LocalUnix);
@@ -90,9 +137,13 @@
             const EtMoonText = MOON_LIST_TEXT[MOON_LIST.indexOf(EtMoon)];
             const EtMoonImg = `<img style="vertical-align:middle;" src="/img/${EtMoon}.png">`;
             //
+            const isoLocalTime = new Date(LocalDate.getTime() - (LocalDate.getTimezoneOffset() * 60000));
+            //
+            document.querySelector('#testUnixTimestmp').value=LocalUnix.toFixed(0);
             document.querySelector('#testEorzeaTimestmp').value=EorzeaUnix.toFixed(0);
             document.querySelector('#testUnixTime').value=LocalDate.toISOString();// expected output: 2011-10-05T14:48:00.000Z
-            document.querySelector('#testEorzeaTime').value=`${EtYear}-${doubleDigit(EtMonth)}-${doubleDigit(EtDate)}T${doubleDigit(EtHour)}:${doubleDigit(EtMinute)}:${doubleDigit(EtSecond)}.${tripleDigit(EtMillis)}Z`;
+            document.querySelector('#testLocalTime').value=isoLocalTime.toISOString().substring(0,23);
+            document.querySelector('#testEorzeaTime').value=`${EtYear}-${doubleDigit(EtMonth)}-${doubleDigit(EtDate)}T${doubleDigit(EtHour)}:${doubleDigit(EtMinute)}:${doubleDigit(EtSecond)}.${tripleDigit(EtMillis)}`;
             document.querySelector('#testMoon').innerHTML= `${EtMoonText} ${EtMoonImg}`;            
         }
     </script>
@@ -101,7 +152,7 @@
 <div>
     <script>
         function gettime(){
-            const LocalDate = new Date();
+            const LocalDate = new Date();            
             const LocalUnix = LocalDate.getTime();
             const EorzeaDate = localToEorzea();
             EorzeaDate.setTime(LocalUnix);
@@ -124,14 +175,17 @@
             const EtMoonText = MOON_LIST_TEXT[MOON_LIST.indexOf(EtMoon)];
             const EtMoonImg = `<img style="vertical-align:middle;" src="/img/${EtMoon}.png">`;
             //
+            const isoLocalTime = new Date(LocalDate.getTime() - (LocalDate.getTimezoneOffset() * 60000));
+            //
             if(document.querySelector('#timemd')!=null){
                 document.querySelector('#UnixTimestmp').value=LocalUnix;
                 document.querySelector('#EorzeaTimestmp').value=EorzeaUnix.toFixed(0);
-                document.querySelector('#UnixTime').value=LocalDate.toISOString();// expected output: 2011-10-05T14:48:00.000Z
-                document.querySelector('#EorzeaTime').value=`${EtYear}-${doubleDigit(EtMonth)}-${doubleDigit(EtDate)}T${doubleDigit(EtHour)}:${doubleDigit(EtMinute)}:${doubleDigit(EtSecond)}.${tripleDigit(EtMillis)}Z`;
+                document.querySelector('#UnixTime').value=LocalDate.toISOString();// expected output: 2011-10-05T14:48:00.000Z                
+                document.querySelector('#LocalTime').value=isoLocalTime.toISOString().substring(0,23);
+                document.querySelector('#EorzeaTime').value=`${EtYear}-${doubleDigit(EtMonth)}-${doubleDigit(EtDate)}T${doubleDigit(EtHour)}:${doubleDigit(EtMinute)}:${doubleDigit(EtSecond)}.${tripleDigit(EtMillis)}`;
                 document.querySelector('#Moon').innerHTML= `${EtMoonText} ${EtMoonImg}`;
             }
-            setTimeout("gettime()", EtSpeed)
+            setTimeout("gettime()", EtSpeed);
         }
         gettime();
         function initcopy() {
