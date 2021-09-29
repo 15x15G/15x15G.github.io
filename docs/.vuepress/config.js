@@ -19,6 +19,7 @@ module.exports = {
     ],
     themeConfig:
     {
+        lastUpdated: '本页最后更新时间', // string | boolean
         nav: [
             { text: '主页', link: '/' }, // 根路径
             { text: '?', link: '/Blog/' }, // 根路径
@@ -71,6 +72,13 @@ module.exports = {
             updatePopup: {
                 message: "网站更新了~",
                 buttonText: "刷新"
+            }
+        },
+        '@vuepress/last-updated': {
+            transformer: (timestamp, lang) => {
+                const moment = require('moment')
+                moment.locale('zh-cn')
+                return moment(timestamp).format('lll') + " UTC+8"
             }
         }
     },

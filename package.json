@@ -29,6 +29,7 @@
     },
     "dependencies": {
         "@giscus/vue": "^1.0.0",
+        "moment": "^2.29.1",
         "vuepress-plugin-robots": "^1.0.1"
     }
 }
