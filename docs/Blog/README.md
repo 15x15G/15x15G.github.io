@@ -13,13 +13,15 @@
 ### 问题
 
 * ~~单页应用的缓存模式导致每次部署之后需要ctrl+F5才会刷新，加上了pwa插件不知道能不能解决~~
-    * 已解决
+    * 加上了pwa，已解决
 
 * js现在都是在`<div>`里加载，有可能会因为各种原因失败（。    
 
-* 由于每次部署都是`git push -f`强制推送，所以基于commit的`lastUpdated`设置只会显示站点部署时间而不是页面修改的时间...没想到解决方法，总不能每次都手动部署然后手动提交`.vuepress/dist`目录吧
-    * TODO: 好吧其实可以试试用页面js调用GithubAPI来拿到commit时间
+* ~~由于每次部署都是`git push -f`强制推送，所以基于commit的`lastUpdated`设置只会显示站点部署时间而不是页面修改的时间...没想到解决方法，总不能每次都手动部署然后手动提交`.vuepress/dist`目录吧~~
+    * ~~TODO: 好吧其实可以试试用页面js调用GithubAPI来拿到commit时间~~
+    * 原因找到了，不是强制推送的问题，是这个[issue](https://github.com/reuixiy/hugo-theme-meme/issues/107#issuecomment-740006482)里提到的[checkout](https://github.com/actions/checkout)有问题，自己修改workflows手动checkout顺利解决了
 
+* 因为大量魔改JS，本站对移动设备支持不友好（。
 
 ### 其他
 
