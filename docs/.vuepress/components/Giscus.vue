@@ -78,7 +78,10 @@ function initgiscus() {
   js.setAttribute("data-mapping", "url");
   js.setAttribute("data-reactions-enabled", "1");
   js.setAttribute("data-emit-metadata", "0");
-  js.setAttribute("data-theme", "light");
+  js.setAttribute(
+    "data-theme",
+    "https://cdn.jsdelivr.net/gh/15x15G/15x15G.github.io@gh-pages/css/giscus.css"
+  );
   js.crossorigin = "anonymous";
   js.async = true;
   div.appendChild(js);
