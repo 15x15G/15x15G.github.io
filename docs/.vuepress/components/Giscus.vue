@@ -89,6 +89,7 @@ function initgiscus() {
 }
 
 function renderComment(frontmatter) {
+  show(); //clock
   clearTimeout(timer);
   const parentDOM = document.querySelector("main.page");
   const commentDOM = document.querySelector(`#${commentDomID}`);

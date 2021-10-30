@@ -894,4 +894,3 @@ function show() {
 	setTimeout("show()", 500)
 }
 
-show();
