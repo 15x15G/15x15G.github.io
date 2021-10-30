@@ -1,55 +1,57 @@
 /**
  * ver.1.2-2014-06-22
+ * fix bug 2021-10-30
  */
 
 //地球時間→エオルゼア時間
-var localToEorzea = function () {
+var localToEorzea = function (unix) {
 	//エオルゼアの1年(月)
-	var MONTHS_PER_YEAR = 12;
+	const MONTHS_PER_YEAR = 12;
 	//エオルゼアの1ヶ月(日)
-	var DATES_PER_MONTH = 32;
+	const DATES_PER_MONTH = 32;
 	//エオルゼアの1日(時間)
-	var HOURS_PER_DATE = 24;
+	const HOURS_PER_DATE = 24;
 	//エオルゼアの1時間(分)
-	var MINUTES_PER_HOUR = 60;
+	const MINUTES_PER_HOUR = 60;
 	//エオルゼアの1分(秒)
-	var SECONDS_PER_MINUTE = 60;
+	const SECONDS_PER_MINUTE = 60;
 	//エオルゼアの1秒(ミリ秒)
-	var MILLISECONDS_PER_SECONDS = 1000;
+	const MILLISECONDS_PER_SECONDS = 1000;
 	//エオルゼア時間の速度(エオルゼア1日※1440分 = 地球時間70分)
-	var EORZEA_PER_LOCAL = 1440 / 70;
+	const EORZEA_PER_LOCAL = 1440 / 70;
 	//エオルゼア時間(UNIX)
 	var EORZEA_MILLISECONDS = 0;
 
+	if (unix) EORZEA_MILLISECONDS = unix * EORZEA_PER_LOCAL;
 	//エオルゼアの月日時分秒をミリ秒に換算
 	/*
 	 *ET1min = ET1,000ms * ET60sec
 	 * (60,000ms)
 	 */
-	var MILLISECONDS_PER_MINUTE = MILLISECONDS_PER_SECONDS * SECONDS_PER_MINUTE;
+	const MILLISECONDS_PER_MINUTE = MILLISECONDS_PER_SECONDS * SECONDS_PER_MINUTE;
 	/*
 	 *ET1hour = ET60,000ms * ET60min
 	 * (3,600,000ms)
 	 */
-	var MILLISECONDS_PER_HOUR = MILLISECONDS_PER_MINUTE * MINUTES_PER_HOUR;
+	const MILLISECONDS_PER_HOUR = MILLISECONDS_PER_MINUTE * MINUTES_PER_HOUR;
 	/*
 	 *ET1date = ET3,600,000ms * ET24h
 	 * (86,400,000ms)
 	 */
-	var MILLISECONDS_PER_DATE = MILLISECONDS_PER_HOUR * HOURS_PER_DATE;
+	const MILLISECONDS_PER_DATE = MILLISECONDS_PER_HOUR * HOURS_PER_DATE;
 	/*
 	 *ET1month = ET86,400,000ms * ET32d
 	 * (2,764,800,000ms)
 	 */
-	var MILLISECONDS_PER_MONTH = MILLISECONDS_PER_DATE * DATES_PER_MONTH;
+	const MILLISECONDS_PER_MONTH = MILLISECONDS_PER_DATE * DATES_PER_MONTH;
 	/*
 	*ET1Year = ET2,764,800,000ms * ET12m
 	* (33,177,600,000ms)
 	*/
-	var MILLISECONDS_PER_YEAR = MILLISECONDS_PER_MONTH * MONTHS_PER_YEAR;
+	const MILLISECONDS_PER_YEAR = MILLISECONDS_PER_MONTH * MONTHS_PER_YEAR;
 	return {
 		setTime: function (time) {
-			var UNIX = time;
+			let UNIX = time;
 			//UNIXエポックミリ秒をエオルゼアエポックミリ秒に換算
 			/*
 			 *LT1d = LT1440min
@@ -68,6 +70,9 @@ var localToEorzea = function () {
 		},
 		getDate: function () {
 			return Math.floor(EORZEA_MILLISECONDS / MILLISECONDS_PER_DATE) % DATES_PER_MONTH;
+		},
+		getDays: function () {
+			return Math.floor(EORZEA_MILLISECONDS / MILLISECONDS_PER_DATE);
 		},
 		getHours: function () {
 			return Math.floor(EORZEA_MILLISECONDS / MILLISECONDS_PER_HOUR) % HOURS_PER_DATE;
@@ -91,52 +96,11 @@ var localToEorzea = function () {
 };
 
 //エオルゼア時間→地球時間
-var eorzeaToLocal = function () {
-	var UNIX = 0;
-	var MONTHS_PER_YEAR = 12;
-	var END_OF_THE_MONTH = new Date();
-	END_OF_THE_MONTH.setFullYear(END_OF_THE_MONTH.getFullYear(), END_OF_THE_MONTH.getMonth() + 1, 0);
-	var DATES_PER_MONTH = END_OF_THE_MONTH.getDate();
-	var HOURS_PER_DATE = 24;
-	var MINUTES_PER_HOUR = 60;
-	var SECONDS_PER_MINUTE = 60;
-	var MILLISECONDS_PER_SECONDS = 1000;
-	var LOCAL_PER_EORZEA = 70 / 1440;
+var eorzeaToLocal = function (UNIX) {
+	const LOCAL_PER_EORZEA = 70 / 1440;
 	var LOCAL_MILLISECONDS = 0;
-	var MILLISECONDS_PER_MINUTE = MILLISECONDS_PER_SECONDS * SECONDS_PER_MINUTE;
-	var MILLISECONDS_PER_HOUR = MILLISECONDS_PER_MINUTE * MINUTES_PER_HOUR;
-	var MILLISECONDS_PER_DATE = MILLISECONDS_PER_HOUR * HOURS_PER_DATE;
-	var MILLISECONDS_PER_MONTH = MILLISECONDS_PER_DATE * DATES_PER_MONTH;
-	return {
-		setTime: function (time) {
-			UNIX = time;
-			LOCAL_MILLISECONDS = UNIX * LOCAL_PER_EORZEA;
-		},
-		setLtTime: function (time) {
-			LOCAL_MILLISECONDS = time;
-		},
-		getMonth: function () {
-			return Math.floor(LOCAL_MILLISECONDS / MILLISECONDS_PER_MONTH) % MONTHS_PER_YEAR;
-		},
-		getDate: function () {
-			return Math.floor(LOCAL_MILLISECONDS / MILLISECONDS_PER_DATE) % DATES_PER_MONTH;
-		},
-		getHours: function () {
-			return Math.floor(LOCAL_MILLISECONDS / MILLISECONDS_PER_HOUR) % HOURS_PER_DATE;
-		},
-		getMinutes: function () {
-			return Math.floor(LOCAL_MILLISECONDS / MILLISECONDS_PER_MINUTE) % MINUTES_PER_HOUR;
-		},
-		getSeconds: function () {
-			return Math.floor(LOCAL_MILLISECONDS / MILLISECONDS_PER_SECONDS) % SECONDS_PER_MINUTE;
-		},
-		getMilliseconds: function () {
-			return LOCAL_MILLISECONDS % MILLISECONDS_PER_SECONDS;
-		},
-		getTime: function () {
-			return LOCAL_MILLISECONDS;
-		}
-	};
+	if (UNIX) LOCAL_MILLISECONDS = UNIX * LOCAL_PER_EORZEA;
+	return new Date(LOCAL_MILLISECONDS)
 };
 
 //日時分をミリ秒に変換
@@ -505,8 +469,7 @@ function etData() {
 	EorzeaDay.setTime(EorzeaUnix);
 	var EtDay = EorzeaDay.getDay();
 	var RemainingDay = EorzeaDay.getTime();
-	var RemainingLtDate = eorzeaToLocal();
-	RemainingLtDate.setTime(RemainingDay);
+	var RemainingLtDate = eorzeaToLocal(RemainingDay);
 	var RemainingLtHours = RemainingLtDate.getHours();
 	var RemainingLtMinutes = RemainingLtDate.getMinutes();
 	var RemainingLtSeconds = RemainingLtDate.getSeconds();
@@ -522,8 +485,7 @@ function etData() {
 	EorzeaHour.setTime(EorzeaUnix);
 	var EtHourAttribute = EorzeaHour.getHourAttribute();
 	var EtHourCountDown = EorzeaHour.getHourCountDown();
-	var ltHourCountDown = eorzeaToLocal();
-	ltHourCountDown.setTime(EtHourCountDown);
+	var ltHourCountDown = eorzeaToLocal(EtHourCountDown);
 	var ltHCDHours = ltHourCountDown.getHours();
 	var ltHCDMinutes = ltHourCountDown.getMinutes();
 	var ltHCDSeconds = ltHourCountDown.getSeconds();
@@ -535,8 +497,7 @@ function etData() {
 	var etHCDSeconds = etHourCountDown.getSeconds();
 	var EtTimeAttribute = EorzeaHour.getTimeAttribute();
 	var EtTimeCountDown = EorzeaHour.getTimeCountDown();
-	var ltTimeCountDown = eorzeaToLocal();
-	ltTimeCountDown.setTime(EtTimeCountDown);
+	var ltTimeCountDown = eorzeaToLocal(EtTimeCountDown);
 	var ltTCDHours = ltTimeCountDown.getHours();
 	var ltTCDMinutes = ltTimeCountDown.getMinutes();
 	var ltTCDSeconds = ltTimeCountDown.getSeconds();
@@ -551,8 +512,7 @@ function etData() {
 	var EorzeaWeather = eorzeaWeather();
 	EorzeaWeather.setTime(EorzeaUnix);
 	var EtWeatherCountDown = EorzeaWeather.getWeatherCountDown();
-	var ltWeatherCountDown = eorzeaToLocal();
-	ltWeatherCountDown.setTime(EtWeatherCountDown);
+	var ltWeatherCountDown = eorzeaToLocal(EtWeatherCountDown);
 	var ltWCDHours = ltWeatherCountDown.getHours();
 	var ltWCDMinutes = ltWeatherCountDown.getMinutes();
 	var ltWCDSeconds = ltWeatherCountDown.getSeconds();
@@ -568,8 +528,7 @@ function etData() {
 	EorzeaMoon.setTime(EorzeaUnix);
 	var EtMoon = EorzeaMoon.getMoon();
 	var EtMoonCountDown = EorzeaMoon.getTime();
-	var ltMoonCountDown = eorzeaToLocal();
-	ltMoonCountDown.setTime(EtMoonCountDown);
+	var ltMoonCountDown = eorzeaToLocal(EtMoonCountDown);
 	var ltMCDHours = ltMoonCountDown.getHours();
 	var ltMCDMinutes = ltMoonCountDown.getMinutes();
 	var ltMCDSeconds = ltMoonCountDown.getSeconds();
@@ -585,8 +544,7 @@ function etData() {
 	var NextLeves = nextLeves();
 	NextLeves.setTime(LocalDate);
 	var LtLevesCountDown = NextLeves.getTime();
-	var ltLevesCountDown = eorzeaToLocal();
-	ltLevesCountDown.setLtTime(LtLevesCountDown);
+	var ltLevesCountDown = new Date(LtLevesCountDown);
 	var ltLCDHours = ltLevesCountDown.getHours();
 	var ltLCDMinutes = ltLevesCountDown.getMinutes();
 	var ltLCDSeconds = ltLevesCountDown.getSeconds();
@@ -601,8 +559,7 @@ function etData() {
 	var NextProvision = nextProvision();
 	NextProvision.setTime(LocalDate);
 	var LtProvisionCountDown = NextProvision.getTime();
-	var ltProvisionCountDown = eorzeaToLocal();
-	ltProvisionCountDown.setLtTime(LtProvisionCountDown);
+	var ltProvisionCountDown = new Date(LtProvisionCountDown);
 	var ltPCDHours = ltProvisionCountDown.getHours();
 	var ltPCDMinutes = ltProvisionCountDown.getMinutes();
 	var ltPCDSeconds = ltProvisionCountDown.getSeconds();
@@ -617,8 +574,7 @@ function etData() {
 	var NextContents = nextContents();
 	NextContents.setTime(LocalDate);
 	var LtContentsCountDown = NextContents.getTime();
-	var ltContentsCountDown = eorzeaToLocal();
-	ltContentsCountDown.setLtTime(LtContentsCountDown);
+	var ltContentsCountDown = new Date(LtContentsCountDown);
 	var ltCCDDates = ltContentsCountDown.getDate();
 	var ltCCDHours = ltContentsCountDown.getHours();
 	var ltCCDMinutes = ltContentsCountDown.getMinutes();
@@ -635,8 +591,7 @@ function etData() {
 	var NextDaily = nextDaily();
 	NextDaily.setTime(LocalDate);
 	var LtDailyCountDown = NextDaily.getTime();
-	var ltDailyCountDown = eorzeaToLocal();
-	ltDailyCountDown.setLtTime(LtDailyCountDown);
+	var ltDailyCountDown = new Date(LtDailyCountDown);
 	var ltDCDHours = ltDailyCountDown.getHours();
 	var ltDCDMinutes = ltDailyCountDown.getMinutes();
 	var ltDCDSeconds = ltDailyCountDown.getSeconds();
@@ -842,8 +797,7 @@ function etData2() {
 	var NextProvision = nextProvision();
 	NextProvision.setTime(LocalDate);
 	var LtProvisionCountDown = NextProvision.getTime();
-	var ltProvisionCountDown = eorzeaToLocal();
-	ltProvisionCountDown.setLtTime(LtProvisionCountDown);
+	var ltProvisionCountDown = new Date(LtProvisionCountDown);
 	var ltPCDHours = ltProvisionCountDown.getHours();
 	var ltPCDMinutes = ltProvisionCountDown.getMinutes();
 	var ltPCDSeconds = ltProvisionCountDown.getSeconds();
