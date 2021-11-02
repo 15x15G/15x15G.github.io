@@ -10,6 +10,8 @@ module.exports = {
         ['script', { src: 'https://cdn.jsdelivr.net/npm/crel@4.2.1/crel.min.js' }],
         ['script', { src: 'https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js' }],
         ['script', { src: '/js/eoclock.js' }],
+        ['link', { rel: 'preload', href: '/fonts/FFXIV_Lodestone_SSF.ttf', as: 'font', type: 'font/woff' }],
+        ['link', { rel: 'preload', href: '/fonts/FFXIV_Lodestone_SSF.woff', as: 'font', type: 'font/woff' }],
         ['meta', { name: 'theme-color', content: '#3eaf7c' }],
         ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
         ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
