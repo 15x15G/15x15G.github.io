@@ -6,17 +6,17 @@
 <textarea id='linenumber' class='nut ffxiv' rows=16 cols=1  disabled=true></textarea>    
 <textarea id='macrotext' class='nut ffxiv' rows=16  wrap='off' style='width:90%'></textarea>        
 </div>
-
+<style>
+    #btnarea .btn:hover{
+        transform: scale(1.5);
+    }
+    textarea{    
+        resize: none;    
+        line-height: 1.1;        
+    }
+</style>
 <div id='btnarea' style="margin: 2px;">
-    <style>
-        #btnarea .btn:hover{
-            transform: scale(1.5);
-        }
-        textarea{    
-            resize: none;    
-            line-height: 1.1;        
-        }
-    </style>
+    
 </div>
 
 <button  type="button"  onclick='createurl()'>生成分享链接</button>

@@ -34,6 +34,7 @@ function getQueryVariable(variable) {
 function initbutton() {
     const str = ``;
     const dom = document.getElementById('btnarea');
+    dom.innerHTML = ''
     for (let i in str) {
         const b = document.createElement("button");
         b.onclick = addicon;
