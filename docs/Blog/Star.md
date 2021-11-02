@@ -1,6 +1,10 @@
+---
+sidebar: auto
+comment: true
+---
+
 # 收藏夹
 
-[[toc]]
 
 ## win实用工具
 
@@ -179,7 +183,7 @@ CSS 奇技淫巧
 
 tooltip库
 
-## ?
+## GFW
 
 ### v2ray 相关
 
@@ -244,7 +248,7 @@ GitHub Actions 生成 star 列表
 
 ## 其他
 
-### [Bark](https://github.com/Finb/Bark)
+### [Bark](https://github.com/Finb/Bark) <Badge text="IOS"/>
 
 ios 通知推送 API
 

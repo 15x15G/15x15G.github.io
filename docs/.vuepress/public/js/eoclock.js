@@ -877,7 +877,10 @@ function etData3() {
 	// +		`${EtMonthImg}<span style="vertical-align:middle;">${EtNewPolarityText}${EtNewMonth}月(${EtMonthText}) ${EtDayText} </span>${EtMoonImg}`
 }
 
+let showtime = null;
+
 function show() {
+	clearTimeout(showtime);
 	const dom1 = document.querySelector('header.navbar')
 	if (dom1) {
 		const dom2 = document.querySelector('.site-name');
@@ -891,6 +894,6 @@ function show() {
 			//dom1.appendChild(d1)
 		}
 	}
-	setTimeout("show()", 500)
+	showtime = setTimeout("show()", 50)
 }
 
