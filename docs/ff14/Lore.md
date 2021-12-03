@@ -28,7 +28,8 @@
 
 <div>
     <script src="/js/search.js" defer></script>
-    <script type="module" src="/js/xivapi.js">  
+    <script type="module">
+      import {XIVAPI} from "/js/xivapi.js";
       window.XIVAPI = XIVAPI
     </script>
     <br>

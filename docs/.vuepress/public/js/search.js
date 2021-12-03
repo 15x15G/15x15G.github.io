@@ -90,7 +90,7 @@ async function LoreSearch() {
             return;
         }
         document.getElementById("loreresult").innerHTML = '搜索中';
-        const url = apiUrl + "/lore?columns=Text,Data,Source&language=cn&string=" + encodeURIComponent(x);
+        const url = apiUrl + "/lore?language=cn&string=" + encodeURIComponent(x);
         await fetch(url)
             .then(data => { return data.json() })
             .then(res => {
@@ -106,9 +106,10 @@ async function LoreSearch() {
 
                 for (i in res.Results) {
                     const source = res.Results[i].Source
-                    const id = res.Results[i].Data.ID;
-                    const name = res.Results[i].Data.Name
-                    const context = name ? `${source}/${id} - ${name}` : `${source}/${id}`;
+                    const id = res.Results[i].SourceID;
+                    const context = `${source}/${id}`;
+
+
 
                     const liNode = document.createElement("li");
                     const aNode = document.createElement("a");
@@ -221,7 +222,6 @@ async function NewLoreSearch() {
         })
 
         jj = {
-            columns: ["Text", "Data", "Source"],
             language: "cn",
             lore: true
         }
@@ -238,9 +238,9 @@ async function NewLoreSearch() {
 
                 for (i in res.Results) {
                     const source = res.Results[i].Source
-                    const id = res.Results[i].Data.ID;
-                    const name = res.Results[i].Data.Name
-                    const context = name ? `${source}/${id} - ${name}` : `${source}/${id}`;
+                    const id = res.Results[i].SourceID;
+                    const context = `${source}/${id}`;
+
 
                     const liNode = document.createElement("li");
                     const aNode = document.createElement("a");
