@@ -28,10 +28,7 @@
 
 <div>
     <script src="/js/search.js" defer></script>
-    <script type="module">
-      import {XIVAPI} from "/js/xivapi.js";
-      window.XIVAPI = XIVAPI
-    </script>
+    <script type="module">import {XIVAPI} from '/js/xivapi.js';window.XIVAPI = XIVAPI</script>
     <br>
     <br>
     <div class="search-box"><input id="loresearch" value='苍天之龙骑士' onkeydown="Enter(event)" ></div>    
