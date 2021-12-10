@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /
+Sitemap: https:/15x15G.github.io/sitemap.xml
+Host: https://15x15g.github.io
