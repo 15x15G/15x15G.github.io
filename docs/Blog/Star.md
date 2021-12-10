@@ -35,11 +35,7 @@ Steam++ 工具箱
 
 ### [rufus](https://github.com/pbatard/rufus)
 
-制作 USB 启动盘
- 
-### [FontLink-GUI](https://github.com/VaslD/FontLink-GUI)
-
-可视化字体回退 (FontLink & FontFallback) 编辑工具
+制作 USB 启动盘 
 
 ### [CrystalDiskMark](https://github.com/hiyohiyo/CrystalDiskMark)
 
@@ -53,13 +49,45 @@ Steam++ 工具箱
 
 一款开源免费的输入法词库转换程序
 
+## 总有一天有用工具
 
+### [FontLink-GUI](https://github.com/VaslD/FontLink-GUI)
+
+可视化字体回退 (FontLink & FontFallback) 编辑工具
+
+### [real-url](https://github.com/wbt5/real-url) 
+
+直播源获取
+
+### [CDNDrive](https://github.com/apachecn/CDNDrive)
+
+~~偷电~~ 偷 CDN 当作云盘用
+
+### [mastodon-archive-viewer-modified](https://github.com/slashyn/mastodon-archive-viewer-modified) <Badge text="Html"/>
+
+展示长毛象存档
+
+### [iProxy](https://github.com/xcodebuild/iProxy)
+
+跨平台网络抓包
+
+### [WindTerm](https://github.com/kingToolbox/WindTerm)
+
+SSH/串行客户端
+
+### [protobuf-decoder](https://github.com/pawitp/protobuf-decoder) <Badge text="Html"/>
+
+protobuf数据解析
 
 ## 油猴脚本
 
 ### [Open-the-F-king-URL-Right-Now](https://github.com/OldPanda/Open-the-F-king-URL-Right-Now) 
 
 自动跳转某些网站不希望用户直达的外链。
+
+### [GM_config](https://github.com/sizzlemctwizzle/GM_config)
+
+轻量的脚本设置界面
 
 ## 游戏
 
@@ -89,6 +117,10 @@ Minecraft 轻量服务端
 ### [Penumbra](https://github.com/Bluefissure/Penumbra)
 
 国服卫月插件 - MOD 工具
+
+### [SkipCutscene](https://github.com/a08381/Dalamud.SkipCutscene)
+
+辍学
 
 ### [OtterBot](https://github.com/Bluefissure/OtterBot) <Badge text="Python"/>
  
@@ -137,6 +169,10 @@ Chrome插件推荐
 
 defanive2 的 MC 贴吧直播贴备份
 
+### [PathPlanning](https://github.com/zhm-real/PathPlanning)
+
+路径规划算法
+
 ## C#
 
 ### [MaterialDesignInXamlToolkit](https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit) 
@@ -145,23 +181,23 @@ Google's Material Design in XAML & WPF, for C# & VB
 
 谷歌风格界面设计
 
+### [MaterialDesignExtensions](https://github.com/spiegelp/MaterialDesignExtensions)
+
+MaterialDesign更多插件
+
 ### [ini-parser](https://github.com/rickyah/ini-parser)
 
 ini读写库
 
+### [Live-Charts](https://github.com/Live-Charts/Live-Charts)
+
+另一个图表工具
+
 ## Python
-
-### [real-url](https://github.com/wbt5/real-url) 
-
-直播源获取
 
 ### [Arrow](https://github.com/arrow-py/arrow)
 
 日期时间库
-
-### [CDNDrive](https://github.com/apachecn/CDNDrive)
-
-~~偷电~~ 偷 CDN 当作云盘用
 
 ## JavaScript
 
@@ -259,3 +295,13 @@ ios 通知推送 API
 ### [matsuri_translation](https://github.com/cn-matsuri/matsuri_translation)<Badge text="HTML"/> <Badge text="JS"/> <Badge text="Python"/>
 
 夏色祭工坊烤推机（推特嵌字机）
+
+### [LxgwWenKai](https://github.com/lxgw/LxgwWenKai)
+
+开源中文字体
+
+### 7z密码破解
+
+[7zpasscrack](https://github.com/xhdljr/7zpasscrack)   [7zip-crack](https://github.com/cyberblackhole/7zip-crack)
+
+两个字典破解工具
